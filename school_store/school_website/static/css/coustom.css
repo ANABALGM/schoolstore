@@ -1,0 +1,124 @@
+body{
+font-family: 'Roboto', sans-serif;
+}
+
+
+.nav-item{
+    letter-spacing : .2em;
+    font-size : 14px;
+    text-transform : uppercase;
+
+   }
+
+.dropdown-item{
+    list-style-type: none;
+    letter-spacing : .2em;
+    font-size : 14px;
+    text-transform : uppercase;
+
+
+   }
+
+.my_footer{
+    background-color:snow;
+
+
+    }
+
+.my_footer p{
+
+    padding-top:10px;
+    font-size:13px
+
+    }
+
+/*** category page ***/
+
+.row_class  {
+
+    padding-top : 15px;
+
+
+    }
+
+.row_class.mx_auto{
+    color:blue;
+    font-size:12px;
+    }
+
+.my_image{
+    width:1300px;
+    height:500px;
+
+    }
+
+.my_title{
+
+     font-size:16px;
+     text-transform:uppercase;
+     letter-spacing:.2em;
+
+
+    }
+
+.my_bottom_margin{
+
+    margin-bottom:5px;
+
+    }
+
+.card-body h4{
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+
+    }
+
+/***product page***/
+
+.prod_class{
+
+     padding-top:15px;
+     padding-bottom:20px;
+}
+.prod_class .mx_auto{
+
+      color:black;
+      font-size:12px;
+      text-decoration:none;
+
+}
+search_text{
+       padding-top:20px;
+}
+
+
+/*** cart page ***/
+
+.my_custom_table{
+
+        min-width:400px;
+        font-size:14px
+
+}
+
+.my_custom_thead{
+
+    font-weight:normal;
+    text_transform:uppercase:
+    letter-spacing:.2em;
+    background-color:LightGray;
+
+}
+.custom_a{
+    text-decoration:none;
+}
+
+.custom_icon{
+    text-decoration:none;
+    color:#868e96 !important;
+
+}
+.my_custom_button{
+    margin-top:5px;
+}

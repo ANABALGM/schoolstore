@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href=""  data-bs-toggle="dropdown" aria-expanded="false">
+            Department
+          </a>
+
+          <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Engineering">ENGINEERING</a></li>
+                <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Science">SCIENCE</a></li>
+                <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Commerce">COMMERCE</a></li>
+                <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Humanities">HUMANITIES</a></li>
+                <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Diploma">DIPLOMA</a></li>
+          </ul>
+         </li>
+          </ul>
+
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            {% if user.is_authenticated %}
+            <li> Hello <span>{{user.username}}</span> </li>
+                <li class="tm-nav-li"><a href="{% url 'schoolapp:logout' %}" class="tm-nav-link active">Logout</a></li>
+            {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'schoolapp:register' %}">Register</a>
+        </li>
+
+        <button class="btn btn-outline-success" type="submit"><a href="{% url 'schoolapp:login' %}">Login</a></button>
+        {% endif %}
+
+        </ul>
+
+
+    </div>
+  </div>
+</nav>

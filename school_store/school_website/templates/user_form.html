@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Form</title>
+</head>
+<body>
+    <h1>User Information Form</h1>
+    <form action="{% url 'schoolapp1:success' %}" method="post" onsubmit="return validateForm();">
+
+
+        {% csrf_token %}
+        <label>Name:</label><br>
+        {{ form.name }}<br><br>
+
+        <label>DOB:</label><br>
+        {{ form.dob }}<br><br>
+
+        <label>Age:</label><br>
+        {{ form.age }}<br><br>
+
+        <label>Gender:</label><br>
+        {{ form.gender }}<br><br>
+
+        <label>Phone Number:</label><br>
+        {{ form.phone_number }}<br><br>
+
+        <label>Email:</label><br>
+        {{ form.email }}<br><br>
+
+        <label>Address:</label><br>
+        {{ form.address }}<br><br>
+
+       <label for="department">Department:</label><br>
+                <select id="department" name="department">
+                    <option value="ENGINEERING">B-TECH</option>
+                    <option value="SCIENCE">SCIENCE</option>
+                    <option value="COMMERCE">COMMERCE</option>
+                    <option value="HUMANITIES">HUMANITIES</option>
+                    <option value="DIPLOMA">DIPLOMA</option>
+                </select><br><br>
+
+        <label for="course">Course:</label><br>
+                <select id="course" name="course"></select><br><br>
+
+        <label>Purpose:</label><br>
+        {{ form.purpose }}<br><br>
+
+        <label>Materials Provided:</label><br>
+        {% for material in all_materials %}
+        <label>
+        <input type="checkbox" name="materials_provide" value="{{ material.pk }}">
+        {{ material.name }}
+        </label><br>
+        {% endfor %}<br>
+
+
+        <input type="submit" value="Submit">
+
+        <button type="button" onclick="window.location.href = '{% url 'schoolapp:home' %}';">Logout</button>
+    </form>
+
+<script>
+    // Define department and course data
+    const departmentCourses = {
+        'ENGINEERING': ['ECE', 'CSE', 'EEE'],
+        'SCIENCE': ['BSc Physics', 'BSc Chemistry', 'BSc Mathematics'],
+        'COMMERCE': ['BCom', 'BBA', 'BCA'],
+        'HUMANITIES': ['Sociology', 'History', 'Geography'],
+        'DIPLOMA': ['Fashion design', 'Psychology', 'Textile engineering'],
+    };
+
+    // Function to update the courses dropdown
+    function updateCoursesDropdown() {
+        const departmentDropdown = document.getElementById('department');
+        const courseDropdown = document.getElementById('course');
+        const selectedDepartment = departmentDropdown.value;
+
+        // Clear the courses dropdown
+        courseDropdown.innerHTML = '<option value="">Select Department First</option>';
+
+        // Populate the courses dropdown based on the selected department
+        if (selectedDepartment in departmentCourses) {
+            const courses = departmentCourses[selectedDepartment];
+            courses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course;
+                option.text = course;
+                courseDropdown.appendChild(option);
+            });
+        }
+    }
+
+    // Event listener to update courses dropdown when department changes
+    const departmentDropdown = document.getElementById('department');
+    departmentDropdown.addEventListener('change', updateCoursesDropdown);
+
+    // Initial update of the courses dropdown
+    updateCoursesDropdown();
+
+
+     // Function to validate the form
+        function validateForm() {
+            // Check if any required fields are empty
+            const nameField = document.getElementById('id_name');
+            const dobField = document.getElementById('id_dob');
+            const genderField = document.getElementById('id_gender');
+            const phoneNumberField = document.getElementById('id_phone_number');
+            const emailField = document.getElementById('id_email');
+            const addressField = document.getElementById('id_address');
+
+            if (
+                nameField.value === "" ||
+                dobField.value === "" ||
+                genderField.value === "" ||
+                phoneNumberField.value === "" ||
+                emailField.value === "" ||
+                addressField.value === ""
+            ) {
+                alert("Please fill in all required fields.");
+                return false; // Prevent form submission
+            }
+
+            // Additional validation if needed
+
+            return true; // Allow form submission if all checks pass
+        }
+
+
+
+ // Function to calculate the age based on the date of birth
+    function calculateAge() {
+        const dobField = document.getElementById("id_dob");
+        const ageField = document.getElementById("id_age");
+
+        // Get the selected date of birth
+        const dobValue = new Date(dobField.value);
+
+        // Calculate the age based on the DOB
+        if (!isNaN(dobValue.getTime())) {
+            const today = new Date();
+            const age = today.getFullYear() - dobValue.getFullYear();
+            ageField.value = age;
+        } else {
+            ageField.value = "";
+        }
+    }
+
+    // Event listener to trigger age calculation when 'dob' field changes
+    const dobField = document.getElementById("id_dob");
+    dobField.addEventListener("change", calculateAge);
+
+    // ... (other code)
+
+</script>
+
+</body>
+</html>

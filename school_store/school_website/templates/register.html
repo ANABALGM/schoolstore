@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+            .design { display:flex;justify-content:center;text-align:left;font-size: medium; padding-bottom:10px;}
+            .design1 {font-size: 105% ;font-family:helvetica;color:midnightblue;}
+    </style>
+
+</head>
+<body>
+<form action="{% url 'schoolapp:register' %}" method="post">
+
+<h2 style="text-align :left;font-size:160%;font-family:helvetica;color:midnightblue;">Registration</h2><br>
+    {% csrf_token %}
+        <label class="design1">Username :</label><br>
+        <input type="text" name="username" size="40" style="height:25px;" required placeholder=""><br><br>
+        <label class="design1">Password :</label><br>
+        <input type="password" name="password" size="40" style="height:25px;"><br><br>
+        <label class="design1">Confirm Password :</label><br>
+        <input type="password" name="password1" size="40" style="height:25px;"><br><br>
+        <input type="submit">
+
+</form>
+{% for msg in messages %}
+<h3>{{msg}}</h3>
+{% endfor %}
+</body>
+</html>
